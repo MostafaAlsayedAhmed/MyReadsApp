@@ -1,0 +1,237 @@
+html,
+body,
+.root {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+}
+body,
+.app {
+  background: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-image: url("/src/images/bookshelves22.jpg"); */
+  background-position: center;
+}
+.bookshelf {
+  background-image: url("/src/images/11.jpg");
+  background-size: cover;
+  padding: 10px 60px 100px !important;
+  background-position: 0 73%;
+}
+
+/* main page */
+
+.list-books-title {
+  padding: 10px 0;
+  background: #a88455;
+  text-align: center;
+}
+.list-books-title h1 {
+  font-weight: 400;
+  margin: 0;
+  color: white;
+}
+
+.list-books-content {
+  padding: 0 0 20px;
+  flex: 1 1;
+  background: #a88455;
+}
+
+.bookshelf {
+  padding: 0 10px 20px;
+}
+
+@media (min-width: 600px) {
+  .bookshelf {
+    padding: 0 20px 40px;
+  }
+}
+
+.bookshelf-title {
+  border-bottom: 1px solid #dedede;
+  text-align: center;
+}
+.bookshelf-books {
+  text-align: center;
+}
+
+.open-search {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
+.open-search a {
+  display: block;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #2e7d32;
+  background-image: url("./icons/add.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 28px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  font-size: 0;
+}
+
+/* search page */
+
+.search-books-bar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 0 6px rgba(0, 0, 0, 0.23);
+}
+.search-books-input-wrapper {
+  flex: 1;
+  background: #e9e;
+}
+.search-books-bar input {
+  width: 100%;
+  padding: 15px 10px;
+  font-size: 1.25em;
+  border: none;
+  outline: none;
+}
+
+.close-search {
+  display: block;
+  top: 20px;
+  left: 15px;
+  width: 50px;
+  height: 53px;
+  background: white;
+  background-image: url("./icons/arrow-back.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 28px;
+  font-size: 0;
+
+  width: 85px;
+  background-color: #ffecc2;
+  border-right: 2px solid #f79323;
+}
+
+.search-books-results {
+  padding: 80px 10px 20px;
+}
+.search-books-results .bookshelf {
+  width: 100%;
+  height: 100vh;
+}
+/* books grid */
+
+.books-grid {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.books-grid li {
+  padding: 10px 15px;
+  text-align: left;
+
+  background: #fff;
+  border: 1px solid #ffc138;
+  border-radius: 5px;
+  margin: 5px;
+  position: relative;
+}
+
+.book {
+  width: 150px;
+}
+.book-title,
+.book-authors {
+  font-size: 0.8em;
+}
+.book-title {
+  margin-top: 10px;
+  min-height: 40px;
+}
+.book-authors {
+  color: #999;
+}
+
+.book-top {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.book-shelf-changer {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 30px;
+  height: 30px;
+  border-radius: 45% 0 0 0;
+  background: #ffb000c7;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 35px;
+  border: 1px solid #fff;
+  border-right: 0;
+  border-bottom: 0;
+  background-image: url("./icons/arrow-drop-down.svg");
+}
+.book-shelf-changer select {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* book cover */
+
+.book-cover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background: #eee;
+
+  width: 150px !important;
+  height: 200px !important;
+  background-size: cover;
+}
+.book-cover-title {
+  padding: 20px 10px 0;
+  text-align: center;
+  font-size: 0.8em;
+  width: 135px;
+  height: 193px;
+}
+.search-books-results .my_book {
+  border-color: #218552 !important;
+  position: relative;
+}
+.search-books-results .my_book::after {
+  content: "My Book";
+  border-color: #218552 !important;
+  background: #3d9468;
+  padding: 6px 10px 3px;
+  font-size: 13px;
+  color: #fff;
+  bottom: 0px;
+  left: 0;
+  border-radius: 0 15px 0 5px;
+  position: absolute;
+}
+.search-books-results .my_book .book-shelf-changer {
+  background-color: #3d9468;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
