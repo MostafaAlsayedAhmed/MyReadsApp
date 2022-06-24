@@ -237,3 +237,11 @@ body,
     animation: App-logo-spin infinite 20s linear;
   }
 }
+h1.no-result {
+  text-align: center;
+  background: #fff8;
+  padding: 40px;
+  width: 800px;
+  margin: auto;
+  border-radius: 15px;
+}
