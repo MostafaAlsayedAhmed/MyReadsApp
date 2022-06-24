@@ -4,7 +4,7 @@ const BookShelf = ({ BookShelf_Name, AllBooks, ShelfGroup, ChangeBookChelf }) =>
 
     const ShelfGroupBooks =
         ShelfGroup === "none" ?
-            AllBooks.filter(bk => (bk.shelf != ShelfGroup)) :
+            AllBooks.filter(bk => (bk.shelf !== ShelfGroup)) :
             AllBooks.filter(bk => (bk.shelf === ShelfGroup))
 
     //The ShelfGroup that we passed it in <BookShelf/>

@@ -17,7 +17,7 @@ const SearchPage = ({ allBooks, ChangeBookChelf }) => {
         .then((res) => {
           if (res?.error) {
             setBooksList([]);
-            throw "There are no books with that name";
+            console.error("There are no books with that name");
           } else {
             setBooksList(res);
           }
@@ -58,6 +58,7 @@ const SearchPage = ({ allBooks, ChangeBookChelf }) => {
 
             < Book
               key={searchedBook?.id}
+              ChangeBookChelf={ChangeBookChelf}
               BookDetails={
                 allBooks.filter((myBook) => {
                   if (searchedBook.id === myBook.id) {
@@ -65,7 +66,6 @@ const SearchPage = ({ allBooks, ChangeBookChelf }) => {
                   }
                 })[0] || searchedBook
               }
-              ChangeBookChelf={ChangeBookChelf}
             />
 
           ))}
