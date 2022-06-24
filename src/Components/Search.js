@@ -11,12 +11,15 @@ const SearchPage = ({ allBooks, ChangeBookChelf }) => {
   const [booksList, setBooksList] = useState([]);
   const [theSearchQuery, setTheSearchQuery] = useState('');
 
-  const getBooksList = () => {
-    if (theSearchQuery !== '') {
-      AllBooksAPI.search(theSearchQuery, 16)
+  let errMessage = '';
+  const getBooksList = async () => {
+    if (theSearchQuery?.length !== 0) {
+
+      await AllBooksAPI.search(theSearchQuery, 20)
         .then((res) => {
+          console.log(res);
           if (res?.error) {
-            setBooksList([]);
+            setBooksList();
             console.error("There are no books with that name");
           } else {
             setBooksList(res);
@@ -24,7 +27,8 @@ const SearchPage = ({ allBooks, ChangeBookChelf }) => {
 
         })
         .catch((err) => {
-          console.error(err)
+          console.error(err);
+          return errMessage = err;
         });
 
     } else {
@@ -35,6 +39,7 @@ const SearchPage = ({ allBooks, ChangeBookChelf }) => {
   useEffect(() => {
     getBooksList(theSearchQuery);
   }, [theSearchQuery]);
+
 
   return (
     <div className="search-books">
@@ -53,23 +58,27 @@ const SearchPage = ({ allBooks, ChangeBookChelf }) => {
         </div>
       </div>
       <div className="search-books-results">
-        <ol className="books-grid">
-          {booksList?.map((searchedBook) => (
+        {theSearchQuery?.length >= 0 && booksList?.length >= 0 ?
 
-            < Book
-              key={searchedBook?.id}
-              ChangeBookChelf={ChangeBookChelf}
-              BookDetails={
-                allBooks.filter((myBook) => {
-                  if (searchedBook.id === myBook.id) {
-                    return { searchedBook, shelf: myBook.shelf };
-                  }
-                })[0] || searchedBook
-              }
-            />
+          <ol className="books-grid">
+            {booksList?.map((searchedBook) => (
 
-          ))}
-        </ol>
+              < Book
+                key={searchedBook?.id}
+                ChangeBookChelf={ChangeBookChelf}
+                BookDetails={
+                  allBooks.filter((myBook) => {
+                    if (searchedBook.id === myBook.id) {
+                      return { searchedBook, shelf: myBook.shelf };
+                    }
+                  })[0] || searchedBook
+                }
+              />
+
+            ))}
+          </ol> :
+          <h1 className="no-result">No Result Found</h1> 
+        }
       </div>
     </div>
   );
