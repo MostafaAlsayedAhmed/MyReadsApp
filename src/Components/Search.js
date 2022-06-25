@@ -8,19 +8,20 @@ import Book from "./Book";
 
 //allBooks, ChangeBookChelf
 const SearchPage = ({ allBooks, ChangeBookChelf }) => {
-  const [booksList, setBooksList] = useState([]);
+  let [booksList, setBooksList] = useState([]);
   const [theSearchQuery, setTheSearchQuery] = useState('');
 
-  let errMessage = '';
+
+
   const getBooksList = async () => {
+
     if (theSearchQuery?.length !== 0) {
 
-      await AllBooksAPI.search(theSearchQuery, 20)
+      AllBooksAPI.search(theSearchQuery, 20)
         .then((res) => {
-          console.log(res);
-          if (res?.error) {
-            setBooksList();
-            console.error("There are no books with that name");
+          if (res?.error) { 
+            setBooksList([]);
+            console.error(res.error, ": There are no books with this name.");
           } else {
             setBooksList(res);
           }
@@ -28,13 +29,13 @@ const SearchPage = ({ allBooks, ChangeBookChelf }) => {
         })
         .catch((err) => {
           console.error(err);
-          return errMessage = err;
         });
 
     } else {
       setBooksList([]);
     }
   }
+
 
   useEffect(() => {
     getBooksList(theSearchQuery);
@@ -58,8 +59,7 @@ const SearchPage = ({ allBooks, ChangeBookChelf }) => {
         </div>
       </div>
       <div className="search-books-results">
-        {theSearchQuery?.length >= 0 && booksList?.length >= 0 ?
-
+        {theSearchQuery?.length > 0 && booksList?.length > 0 ?
           <ol className="books-grid">
             {booksList?.map((searchedBook) => (
 
@@ -76,8 +76,7 @@ const SearchPage = ({ allBooks, ChangeBookChelf }) => {
               />
 
             ))}
-          </ol> :
-          <h1 className="no-result">No Result Found</h1> 
+          </ol> : <h1 className="no-result">No Result Found</h1>
         }
       </div>
     </div>
