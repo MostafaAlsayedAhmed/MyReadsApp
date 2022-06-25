@@ -1,9 +1,21 @@
+## Project Description for My Reads App
+
+This is a practice exercise for the 'React.js Fundamentals' section of Udacity's React Nanodegree. This React App has two pages: the main (HomePage) page and a search page (SearchPage). Also, I divided this project into 3 components: Shelf, Book, and Options-Dropdown.
+
+On the Home Page, we can go through three book lists:
+- books currently being read
+- books that you wish to read
+- books that you have already read
+ 
+On the Search Page, you can enter a search query to find other books to add to your lists.
+The "react-router-dom" has been used to implement routing. As a result, the back button and the add new-book button functionality are completely operational. 
+
+
+
 The application was created with 
 ## create-react-app
 and requires only 
-## npm install 
-&  
-## npm start 
+## npm install   &&    npm start 
 to get it installed and launched.
 
 
